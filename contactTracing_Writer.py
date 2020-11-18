@@ -24,7 +24,7 @@ def reader(query):
                 x = x.rstrip('\n')
                 x = x.split(',')
                 x.insert(0, filename.replace('.csv', ''))
-                if location in x and startTime in x and endTime in x:
+                if location in x and x[2] >= startTime and x[3] <= endTime:
                     print(x[0])
                     
     ## Different if statements depending on length of query
