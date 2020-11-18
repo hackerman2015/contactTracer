@@ -28,8 +28,7 @@ def reader(query):
 
 
 def main():
-##    query = userInput()
-    query = ('location', '4AM - 8AM')
+    query = userInput()
     reader(query)
     
     
