@@ -1,42 +1,44 @@
-import csv
+import os
 def userInput():
-    userData = []
+    print('Querying for a location and time will return all users at\nthat location at the specified time.')
+    print('******************************************************')
+    location = input('What location are you querying for? ')
+    startTime = input('What time are you querying for?\nStart time: ')
+    endTime = input('End time: ')
+    
+
+    return location, startTime, endTime
+
+
+def reader(query):
     tempList = []
-    userDict = {}
-    
-    i = 0
-    x = ''
-    while x != 'Quit':
-        tempList = []
-        x = input('Please provide all locations you have been.\nAfter you write one location, press enter.\nDo this until all locations have been entered.\nLocation: ')
-        if x == 'q' or x == 'Quit' or x == 'quit':
-            break
-        a = input('Now provide the time in military format you were at this location.\nFormat = "22-24"\nTime you arrived: ')
-        l = input('Time you left: ')
-        tempList.append(x)
-        tempList.append(a)
-        tempList.append(l)
-        userData.append(tempList)
+    ## If statements for location + time query
+##    directory = input('Type the directory the user files are in: ')
+    location = query[0]
+    startTime = query[1]
+    endTime = query[2]
+    directory = '/probatorem/pyProjects/FinalProject/'
+    for filename in os.listdir(directory):
+        if '.csv' in filename:
+            file = open(directory + filename, 'r')
+            for x in file:
+                x = x.rstrip('\n')
+                x = x.split(',')
+                x.insert(0, filename.replace('.csv', ''))
+                if location in x and startTime in x and endTime in x:
+                    print(x[0])
                     
-        print('If you have finished, type "Quit".')
-    return userData
+    ## Different if statements depending on length of query
 
-def dataCompiler(userData):
-    userName = input('Type your name: ')
-    fileName = userName + '.csv'
-
-    file = open(fileName, 'w')
-    file = csv.writer(file, dialect='excel')
-    file.writerows(userData)
-
-
-    
 
 def main():
-    userData = userInput()
-    dataCompiler(userData)
+    query = userInput()
+##    query = ('mexico', '6', '8')
+    reader(query)
     
     
+
+
 
 
 main()
