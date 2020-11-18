@@ -34,8 +34,7 @@ def dataCompiler(userDict):
     
 
 def main():
-##    userDict = userInput()
-    userDict = {'steve': [['location', '4AM - 8AM'], ['mexico', '10PM - 11PM']]}
+    userDict = userInput()
     dataCompiler(userDict)
     
     
