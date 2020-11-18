@@ -31,8 +31,7 @@ def reader(query):
 
 
 def main():
-##    query = userInput()
-    query = ('mexico', '6', '8')
+    query = userInput()
     reader(query)
     
     
