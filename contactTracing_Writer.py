@@ -17,10 +17,9 @@ def reader(query):
     location = query[0]
     startTime = query[1]
     endTime = query[2]
-    directory = '/probatorem/pyProjects/FinalProject/'
-    for filename in os.listdir(directory):
+    for filename in os.listdir():
         if '.csv' in filename:
-            file = open(directory + filename, 'r')
+            file = open(filename, 'r')
             for x in file:
                 x = x.rstrip('\n')
                 x = x.split(',')
@@ -32,8 +31,8 @@ def reader(query):
 
 
 def main():
-    query = userInput()
-##    query = ('mexico', '6', '8')
+##    query = userInput()
+    query = ('mexico', '6', '8')
     reader(query)
     
     
