@@ -17,24 +17,22 @@ def reader(query):
     location = query[0]
     startTime = query[1]
     endTime = query[2]
-    directory = '/probatorem/pyProjects/FinalProject/'
-    for filename in os.listdir(directory):
+    for filename in os.listdir():
         if '.csv' in filename:
-            file = open(directory + filename, 'r')
+            file = open(filename, 'r')
             for x in file:
                 x = x.rstrip('\n')
                 x = x.split(',')
                 x.insert(0, filename.replace('.csv', ''))
-                print(x)
-                if location in x and startTime in x and endTime in x:
-                    print('dub')
+                if location in x and x[2] >= startTime and x[3] <= endTime:
+                    print(x[0])
                     
     ## Different if statements depending on length of query
 
 
 def main():
-    query = userInput()
-##    query = ('mexico', '6', '8')
+##    query = userInput()
+    query = ('mexico', '6', '8')
     reader(query)
     
     
